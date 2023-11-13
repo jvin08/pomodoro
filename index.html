@@ -1,0 +1,142 @@
+
+<body>
+  <div class="bg">
+    <img class="image-bg" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/no_bg-1.jpg" alt="pomodoro-bg" />
+    <img class="timer-bg" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/timer-1.png" alt="timer" />
+    <p class="current-task">...task in progress will see here...</p>
+    
+    <img class="btn image-tasks" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/tasks_1.jpg" alt="button tasks" />
+    
+    <img class="btn time-set_up" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/time_set_up.jpg" alt="time-set_up" />
+    <a href="https://www.skool.com/developerpro" target="_blank">
+    <img class="btn go_to_skool" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/skool_2.png" alt="skool" />
+    </a>
+    <div class="circle one">
+      <p>Confetti</p>
+    </div>
+    <div class="circle two"><a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">
+      <p>info<br>wiki</p>
+    </a></div>  
+
+      <img  class="btn pipe-blow" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/pipe-blow.jpg" alt="pipe-blow" />
+      <img class="btn tine-pluck" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/tine-pluck.jpg" alt="tine-pluck" />
+
+    <img class="btn piano-sound" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/piano-sound.jpg" alt="piano-sound" />
+    <img class="btn hit-high" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/hit-high.jpg" alt="hit-high" />
+    
+    <img class="minutes-arrow" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/arrow2_2.png" alt="hours" />
+    <img class="seconds-arrow" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/arrow-1_1.png" alt="minutes" />
+    <img class="btn x-twitter" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/xx-twitter.png" alt="x-twitter" />
+    
+<!-- timer buttons     -->
+    <img class="btn play" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/play-11.jpg" alt="play" />
+    <img class="btn pause" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/pause1.jpg" alt="pause" />
+    <img class="btn stop" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/stop.jpg" alt="pause" />
+    
+<!--color themes      -->
+    <div class="themes">
+    <img class="btn sky theme" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/sky_theme.png" alt="sky" />
+    <img class="btn yellow theme" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/yellow_theme.png" alt="yellow-theme" />
+    <img class="btn green theme" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/green_theme.png" alt="green-theme" />
+    <img class="btn black theme" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/black_theme.png" alt="black-theme" />
+    <img class="btn red theme" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/red_theme.png" alt="slate-theme" />
+    </div>
+<!-- timer     -->
+    <p class="timer">25:00</p>
+  </div>
+  
+<!-- MODAL WINDOW WITH TASKS   -->
+<div class='modal hidden'>
+    <img class="close-btn" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/close.PNG" alt="close-btn" />
+<!--input  tasks  -->
+    <div class="form">
+      <input class="input" type="text" placeholder="Type or generate task and press enter" />
+      <button class="task-generator">Generate</button>
+      <div class="input-border"></div>
+    </div>
+  
+  
+<!-- tasks -->
+    <div class="list-container">
+      <div class="started-container">
+        <h1 class="started">Pending</h1>
+        <span class="message-pending">Click task to put on dashboard</span>
+        <ul class="started-list"></ul>
+      </div>
+      <div class="finished-container">
+        <h1 class="finished">Trash</h1>
+        <ul class="finished-list"></ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+<!--  modal time set up  -->
+  <div class='time_setup_modal hidden'>
+    <img class="close-btn-time" src="https://raw.githubusercontent.com/jvin08/pomodoro/main/close.PNG" alt="close-btn" />
+    <div class="pomodoroCalc">
+      <p>Pomodoro</p>
+      <span>set up duration here</span>
+      <div>
+        <button class="decPomodoro" onclick="dec('pomodoro')">-</button>
+        <input class="pomodoro" type="text" readonly value="25">
+        <button class="incPomodoro" onclick="inc('pomodoro')">+</button>
+      </div> 
+    </div>
+    <div class="shortCalc">
+      <p>Short breaks</p>
+      <span>5-10min after each pomodoro</span>
+      <div>
+        <button onclick="dec('short')">-</button>
+        <input class="short" type="text" readonly value="5">
+        <button onclick="inc('short')">+</button>
+      </div> 
+    </div>
+    <button class="save">Save</button>
+    <div class="longCalc">
+      <p>Long breaks</p>
+      <span>20-30min after 4 pomodoros</span>
+      <div>
+        <button onclick="dec('long')">-</button>
+        <input class="long" type="text" readonly value="20">
+        <button onclick="inc('long')">+</button>
+      </div> 
+    </div>
+    <div class="cyclesCalc">
+      <p>Cycles</p>
+      <span>number of pomodoros left</span>
+      <div>
+        <button onclick="dec('cycles')">-</button>
+        <input class="cycles" type="text" readonly value="5">
+        <button onclick="inc('cycles')">+</button>
+      </div> 
+    </div
+      
+  </div>
+      
+</body>
+<script>
+  function inc(element) {
+    element = '.' + element
+    let el = document.querySelector(element)
+    let step = 1
+    if(element==='.short' || element==='.long'){
+      step = 5
+    }
+    el.value = parseInt(el.value) + step
+  }
+
+  function dec(element) {
+    element = '.' + element
+    let el = document.querySelector(element)
+    let step = 1
+    if(element==='.short' || element==='.long'){
+      step = 5
+    }
+    if (parseInt(el.value) > 0) {
+      el.value = parseInt(el.value) - step
+    }
+  }
+</script>
