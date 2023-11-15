@@ -90,7 +90,11 @@ renderFinished()
 
 function toggleModal(){
    modalEl.classList.toggle('hidden')
+  if(timerIsActive){
+    stopTimer()
+  }
 }
+
 function toggleTimeSetUpModal(){
   if(taskSetUp && !timerIsActive){
     timeSetupModalEl.classList.toggle('hidden')
@@ -233,7 +237,7 @@ function renderPending(){
 }
 
 function renderFinished(){
-  finishedEl.innerHTML = '<p class="trash-table">Place pending here</p>'
+  finishedEl.innerHTML = '<p class="trash-table">Place for finished tasks</p>'
   //render if tasks exist
   finishedTasks.length && finishedTasks.forEach((task)=>{
     // task.color = 'gray'
@@ -325,9 +329,9 @@ function myTimer() {
     }
     seconds === 59 && minutes--
   if(minutes === 0 && seconds === 0){
-    toggleBreak()
     currentCycle++
     if(currentTask.cyclesArray.length > currentCycle){
+       toggleBreak()
        minutes = currentTask.cyclesArray[currentCycle]
        startTimer()
     } 
@@ -417,8 +421,6 @@ function cyclesArray(pomodoro, shortBreak, longBreak, cycles){
 function updateTimeSettings(currentTask){
   pomodoroEl.value = currentTask.cyclesArray[0]
   shortEl.value = currentTask.cyclesArray[1]
-  // longEl.value = longBreak
-  // cyclesEl.value = cycles
 }
 
 
@@ -434,7 +436,6 @@ const fetchBoredActivity = async () => {
     }
     const activity = data.activity
     inputFieldEl.value = activity
-    
   } catch (error) {
     console.error(error)
     inputFieldEl.textContent = 'Failed to fetch bored activity'
@@ -497,6 +498,11 @@ function lunchConfettiSession(){
   setTimeout(()=>{
     console.log('im here')
     clearInterval(makeSession)
+      let lanchFaker = setInterval(changeBodyColorWithFaker, 500)
+      setTimeout(()=>{
+        clearInterval(lanchFaker)
+        document.body.style.backgroundColor = '#222831'
+      },5000)
   }, 10000)
 }
 
