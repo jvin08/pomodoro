@@ -263,8 +263,7 @@ p.break{
   color: grey;
 }
 .trash-table {
-  border: 1px dashed red;
-  border-style: dotted dashed solid double;
+  border: 5px dashed #010916;
   border-radius: 0.5em;
   padding: 2em 3em;
   margin: 0;
@@ -331,6 +330,9 @@ span{
   display: flex;
   margin-bottom: 2em;
   min-width: 550px;
+}
+.message-pending{
+  text-align: center;
 }
 .started-container, .finished-container{
   padding: 0.5em;
