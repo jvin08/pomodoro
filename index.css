@@ -7,6 +7,9 @@ body {
   background-color: #222831;
   font-family: 'Pragati Narrow', sans-serif;
 }
+.absolute {
+  position: absolute;
+}
 .bg {
   margin: auto;
   margin-top: -10px;
@@ -15,23 +18,34 @@ body {
   z-index: -1;
 }
 .timer-bg {
-  position: absolute;
   top: 162px;
   left: 152px;
   width: 250px;
   border-radius: 50%;
 }
+.cycle-tracker {
+  top: 285px;
+  left: 257px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
 .image-bg {
-  position: absolute;
   width: 100%;
-  
 }
 .image-tasks {
   top: 412px;
   left: 45px;
   width: 20.5%;
   border-radius: 22px;
-  
+}
+.start-here{
+  top: 435px;
+  left: -20px;
+  border-radius: 18px;
+/*   width: 70px; */
+/*   height: 30px; */
+  color: white;
+  opacity: 0;
 }
 .btn {
   position: absolute;
@@ -119,14 +133,12 @@ a {
 }
 
 .pipe-blow {
-  position: absolute;
   top: 45px;
   left: 392px;
   width: 115px;
   border-radius: 20px;
 }
 .tine-pluck {
-  position: absolute;
   top: 410px;
   left: 393px;
   width: 115px;
@@ -135,7 +147,6 @@ a {
   margin-top: auto;
 }
 .piano-sound {
-  position: absolute;
   width: 21%;
   top: 158px;
   left: 395px;
@@ -143,7 +154,6 @@ a {
   z-index: 4;
 }
 .hit-high {
-  position: absolute;
   width: 21%;
   top: 283px;
   left: 399px;
@@ -153,7 +163,6 @@ a {
 }
         
 .minutes-arrow {
-  position: absolute;
   width: 15%;
   top: 265px;
   left: 256px;
@@ -162,7 +171,6 @@ a {
   z-index: 2;
 }
 .seconds-arrow {
-  position: absolute;
   width: 18%;
   top: 265px;
   left: 251px;
@@ -170,8 +178,7 @@ a {
   rotate: -93deg;
   z-index: 2;
 }
-.x-twitter {
-  position: absolute;
+.faker-color {
   border-radius: 50%;
   width: 8%;
   top: 65px;
@@ -181,7 +188,6 @@ a {
   }
 }
 .play {
-  position: absolute;
   top: 118px;
   left: 144px;
   width: 15%;
@@ -190,21 +196,18 @@ a {
 }
 .pause {
   border-radius: 50%;
-  position: absolute;
   top: 98px;
   left: 243px;
   width: 12%;
 }
 .stop {
   border-radius: 120px 120px 0 0;
-  position: absolute;
   top: 118px;
   left: 323px;
   width: 15%;
   rotate: 35deg;
 }
 .theme {
-  position: absolute;
   top: 48px;
   left: 343px;
   width: 4.5%;
@@ -222,20 +225,26 @@ a {
   top: 96px;
 }
 p.timer {
-  position: absolute;
-  top: 285px;
+  top: 315px;
   left: 245px;
   font-size: 2rem;
   font-weight: 700;
+  margin: 0;
   color: #0F1A1A;
+}
+p.break{
+  top: 333px;
+  left: 255px;
 }
 .hidden {
   display: none;
 }
 .transparent {
-  opacity: 0
+  opacity: 0;
 }
-
+.visible {
+  opacity: 1;
+}
 
 .modal, .time_setup_modal {
   background-color: rgba(0, 0, 0, 0.7);
@@ -295,7 +304,6 @@ input:focus {
  outline: none;
 }
 .task-generator{
-  position: absolute;
   height: 55px;
   font-family: 'Pragati Narrow', sans-serif;
   font-size: 1.2rem;
@@ -382,13 +390,15 @@ ul li:active {
   background-color: #d2d6df;
   cursor: move;
 }
+.started-list li {
+  cursor: pointer;
+}
 .finished-list li{
   color: #333;
   border-color: grey;
 }
 
 .close-btn, .close-btn-time {
-  position: absolute;
   width: 5%;
   top: 4%;
   left: 2%;
@@ -412,7 +422,7 @@ ul li:active {
   position:absolute;
   display: flex;
   flex-direction: column;
-  top: 10%;
+  top: 5%;
   left: 20%;
   > p {
     font-size: 2rem;
@@ -430,25 +440,13 @@ ul li:active {
 }
 .longCalc,
 .cyclesCalc {
-  top: 70%;
+  top: 65%;
 }
-.cyclesCalc div > button,
-.pomodoroCalc div > button,
-.shortCalc div > button,
-.longCalc div > button {
-  width: 50px;
-  height: 50px;
-  font-size: 2rem;
-  margin: 0;
-  border: none;
-  border-radius: 50%;
-  border: 3px solid #0E0E0E;
-  cursor: pointer;
-  background-color: #dbddb4;
-  background:linear-gradient(to bottom right, #FFE4B4 30%, #353535 80%);
-  &:hover{
-    opacity: 0.8;
-  }
+.cyclesCalc div,
+.pomodoroCalc div,
+.shortCalc div,
+.longCalc div {
+  display: flex;
 }
 .cyclesCalc input,
 .pomodoroCalc input,
@@ -466,14 +464,17 @@ ul li:active {
   border: 5px solid #0E0E0E;
   background:linear-gradient(to bottom, #FFE4B4 30%, #353535 90%);
 }
+.dec {
+  rotate: 180deg;
+}
 .save {
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 42%;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   color: lightgrey;
-  border-top: 26px solid ForestGreen;
+  border-top: 26px solid #222831;
   border-bottom: 6px solid grey;
   border-left: 1px solid yellow;
   border-right: 15px solid #3F2A1B;
@@ -505,7 +506,6 @@ ul li:active {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 
 .shake {
   animation-name: shake;
