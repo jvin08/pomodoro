@@ -1,7 +1,7 @@
 
 console.clear()
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
-import { faker } from "https://cdn.skypack.dev/@faker-js/faker";
+
 
 const localStorageData = JSON.parse(localStorage.getItem('myPomidoro'));
 
@@ -17,6 +17,26 @@ if(pendingTasks.length){
   currentTask = pendingTasks[0]
 }
 const finishedTasks = localStorageData[1]
+
+ // Generate an array of 100 colors
+  const generateRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+  const generateColorArray = (count) => {
+    const colorArray = [];
+    for (let i = 0; i < count; i++) {
+      colorArray.push(generateRandomColor());
+    }
+    return colorArray;
+  };
+  const arrayOfColors = generateColorArray(100);
+  let index = Math.floor(Math.random()*100)
+
 
 // const  = document.querySelector('.')
 const themeColors = ["RoyalBlue","Gold","DarkGreen", "#222831", "DarkOrange"]
@@ -134,7 +154,7 @@ function changeBodyColor(color){
   document.querySelector('body').style.backgroundColor = color
 }
 function changeBodyColorWithFaker(){
-  changeBodyColor(faker.color.rgb())
+  changeBodyColor(arrayOfColors[index])
 }
 
 function addTaskToScreen(e){
@@ -451,7 +471,7 @@ function createOneConfetti(top,left){
   conf.className = 'confetti'
   conf.style.width = `${Math.floor(Math.random()*15)}px`
   conf.style.height = `${Math.floor(Math.random()*13)}px`
-  conf.style.background = faker.color.rgb()
+  conf.style.background = arrayOfColors[index]
   conf.style.top = `${top}px`
   conf.style.left = `${left}px`
   conf.style.borderRadius = '50%'
